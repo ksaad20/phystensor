@@ -103,3 +103,10 @@ class PhysicalTensor:
     def T(self) -> 'PhysicalTensor':
         """Transposition preserves dimensions."""
         return PhysicalTensor(self.data.T, self.dimensions)
+
+from phystensor.io.logging import log_dimension_error
+
+# Inside a check:
+if dims_a != dims_b:
+    log_dimension_error(TypeError("Mismatch"), dims_a, dims_b)
+    raise TypeError("...")
