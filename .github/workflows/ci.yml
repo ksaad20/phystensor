@@ -30,4 +30,5 @@ jobs:
 
     - name: Run Physics Validation (Pytest)
       run: |
-        python -m pytest
+        export PYTHONPATH=$PYTHONPATH:$(pwd)/src
+        python -m pytest tests/
