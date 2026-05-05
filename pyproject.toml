@@ -1,1 +1,65 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
 
+[project]
+name = "phystensor"
+version = "0.1.0"
+authors = [
+  { name="Your Name", email="founder@xylema.com" },
+]
+description = "A century-proof SI-vector physics engine for industrial inference."
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+    "numpy>=1.24.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "ruff>=0.1.0",
+    "build",
+    "twine",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/your-username/phystensor"
+"Bug Tracker" = "https://github.com/your-username/phystensor/issues"
+"Company" = "https://xylema.com"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+# --- Linter Configuration (Ruff) ---
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "UP"] 
+# E: Error, F: Pyflakes, I: Isort, N: PEP8-naming, UP: Pyupgrade
+ignore = ["D203"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+# --- Testing Configuration (Pytest) ---
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra -q"
+testpaths = [
+    "tests",
+]
+
+# --- Build/Distribution ---
+[tool.setuptools.package-data]
+phystensor = ["py.typed"] # PEP 561 compliance for static type checkers
