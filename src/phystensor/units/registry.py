@@ -40,3 +40,55 @@ class UniversalRegistry:
 
 # Global Instance for the Phystensor Ecosystem
 registry = UniversalRegistry()
+
+# Constants based on the 2019 redefinition of SI base units
+# Vector format: (L, M, T, I, Θ, N, J)
+
+# --- COSMOLOGICAL & RELATIVISTIC ---
+# Speed of Light (c): The speed limit of the universe
+U.define("c", Dimensions((1, 0, -1, 0, 0, 0, 0)), 299792458.0)
+
+# Gravitational Constant (G): Governing General Relativity
+U.define("G", Dimensions((3, -1, -2, 0, 0, 0, 0)), 6.67430e-11)
+
+# Hubble Constant (H0): The expansion rate of the universe
+U.define("H0", Dimensions((0, 0, -1, 0, 0, 0, 0)), 2.268e-18)
+
+# --- QUANTUM & ATOMIC ---
+# Planck Constant (h): The scale of the subatomic world
+U.define("h", Dimensions((2, 1, -1, 0, 0, 0, 0)), 6.62607015e-34)
+
+# Reduced Planck Constant (hbar)
+U.define("hbar", Dimensions((2, 1, -1, 0, 0, 0, 0)), 1.054571817e-34)
+
+# Fine-structure constant (alpha): Dimensionless (0,0,0,0,0,0,0)
+U.define("alpha", Dimensions((0, 0, 0, 0, 0, 0, 0)), 7.297352569e-3)
+
+# --- ELECTROMAGNETIC (EEE Core) ---
+# Elementary Charge (e): The charge of a single electron
+U.define("e_charge", Dimensions((0, 0, 1, 1, 0, 0, 0)), 1.602176634e-19)
+
+# Vacuum Permittivity (epsilon_0)
+U.define("eps0", Dimensions((-3, -1, 4, 2, 0, 0, 0)), 8.8541878128e-12)
+
+# Vacuum Permeability (mu_0)
+U.define("mu0", Dimensions((1, 1, -2, -2, 0, 0, 0)), 1.25663706212e-6)
+
+# --- THERMODYNAMIC & CHEMICAL ---
+# Boltzmann Constant (k_B): Bridging Temp and Energy
+U.define("kB", Dimensions((2, 1, -2, 0, -1, 0, 0)), 1.380649e-23)
+
+# Avogadro Constant (N_A): The link to the macroscopic world
+U.define("NA", Dimensions((0, 0, 0, 0, 0, -1, 0)), 6.02214076e23)
+
+# Molar Gas Constant (R)
+U.define("R_gas", Dimensions((2, 1, -2, 0, -1, -1, 0)), 8.314462618)
+
+# Stefan-Boltzmann Constant (sigma)
+U.define("sigma_sb", Dimensions((0, 1, -3, 0, -4, 0, 0)), 5.670374e-8)
+
+# --- ASTRONOMICAL SCALES ---
+U.define("M_earth", Dimensions((0, 1, 0, 0, 0, 0, 0)), 5.9722e24)
+U.define("R_earth", Dimensions((1, 0, 0, 0, 0, 0, 0)), 6371000.0)
+U.define("M_sun",   Dimensions((0, 1, 0, 0, 0, 0, 0)), 1.98847e30)
+U.define("AU",      Dimensions((1, 0, 0, 0, 0, 0, 0)), 149597870700.0)
