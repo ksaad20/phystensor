@@ -61,3 +61,10 @@ def guard_transcendental(func):
         DimensionalityManager.validate_transcendental(tensor.dimensions, func.__name__)
         return func(tensor, *args, **kwargs)
     return wrapper
+
+from phystensor.io.logging import log_dimension_error
+
+# Inside a check:
+if dims_a != dims_b:
+    log_dimension_error(TypeError("Mismatch"), dims_a, dims_b)
+    raise TypeError("...")
