@@ -6,39 +6,31 @@ and multi-disciplinary research.
 (c) 2026 Xylema Private Limited.
 """
 
-# 1. CORE IDENTITY
-# Primary classes and factory methods for rapid development.
-from phystensor.core.tensor import PhysicalTensor
-from phystensor.io.conversion import quantity
+# 1. CORE IDENTITY (Lazy-loaded to prevent circularity)
+def __getattr__(name):
+    if name in ("PhysicalTensor", "tensor"):
+        from phystensor.core.tensor import PhysicalTensor
+        return PhysicalTensor
+    if name in ("quantity", "q"):
+        from phystensor.io.conversion import quantity
+        return quantity
+    
+    # Standard Module Exposure
+    if name == "core":
+        import phystensor.core as core
+        return core
+    if name == "units":
+        import phystensor.units as units
+        return units
+    # Repeat for linalg, utils, io...
 
-# 2. MODULE EXPOSURE
-# Standard namespace access to sub-modules.
-from phystensor import core
-from phystensor import units
-from phystensor import linalg
-from phystensor import utils
-from phystensor import io
+    raise AttributeError(f"module {__name__} has no attribute {name}")
 
-# 3. UNIVERSAL PHYSICAL CONSTANTS
-# High-precision constants for EEE, Aerospace, and Astrophysics.
+# Move Constants to absolute imports ONLY if they don't depend on PhysicalTensor
 from phystensor.units.constants import (
-    c, G, h, e, k_B, N_A,      # Fundamental constants
-    eps_0, mu_0, Z_0,         # EEE / Electromagnetics
-    g_n, M_sun, AU            # Aerospace / Astrophysics
+    c, G, h, e, k_B, N_A, eps_0, mu_0, Z_0, g_n, M_sun, AU
 )
-
-# 4. MATHEMATICAL CONSTANTS
-# Dimensionless constants for rotations and engineering calculations.
 from phystensor.utils.math_const import PI, TAU, E
-
-# 5. SYSTEM METADATA
-from phystensor.io.version import __version__, get_version_info
-
-# 6. INDUSTRIAL ALIASES (Low-Labor API)
-# 'q' is the industry standard for fast, unit-aware instantiation.
-# 'tensor' provides a more descriptive alias for PhysicalTensor.
-tensor = PhysicalTensor
-q = quantity
 
 __all__ = [
     "PhysicalTensor",
