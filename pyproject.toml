@@ -31,12 +31,15 @@ dev = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/your-username/phystensor"
-"Bug Tracker" = "https://github.com/your-username/phystensor/issues"
-"Company" = "https://xylema.com"
+Homepage = "https://github.com/ksaad20/phystensor"
+"Bug Tracker" = "https://github.com/ksaad20/phystensor/issues"
+Company = "https://xylema.com.bd"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+phystensor = ["py.typed"]
 
 # --- Linter Configuration (Ruff) ---
 [tool.ruff]
@@ -44,9 +47,8 @@ line-length = 100
 target-version = "py311"
 
 [tool.ruff.lint]
-select = ["E", "F", "I", "N", "UP"] 
-# E: Error, F: Pyflakes, I: Isort, N: PEP8-naming, UP: Pyupgrade
-ignore = ["D203", "I001", "F401"] # I001: Sort, F401: Unused imports
+select = ["E", "F", "I", "N", "UP"]
+ignore = ["D203", "D205", "D400", "I001", "F401"]
 
 [tool.ruff.format]
 quote-style = "double"
@@ -56,14 +58,5 @@ indent-style = "space"
 [tool.pytest.ini_options]
 minversion = "7.0"
 addopts = "-ra -q"
-testpaths = [
-    "tests",
-]
-
-# --- Build/Distribution ---
-[tool.setuptools.package-data]
-phystensor = ["py.typed"] # PEP 561 compliance for static type checkers
-
-[tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]
