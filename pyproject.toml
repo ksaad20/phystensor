@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "phystensor"
 version = "0.1.0"
 authors = [
-  { name="Your Name", email="founder@xylema.com" },
+  { name="Kazi Saad Asif", email="kazisaadasif29@gmail.com" },
 ]
 description = "A century-proof SI-vector physics engine for industrial inference."
 readme = "README.md"
@@ -63,3 +63,7 @@ testpaths = [
 # --- Build/Distribution ---
 [tool.setuptools.package-data]
 phystensor = ["py.typed"] # PEP 561 compliance for static type checkers
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
