@@ -107,6 +107,14 @@ class PhysicalTensor:
 from phystensor.io.logging import log_dimension_error
 
 # Inside a check:
-if dims_a != dims_b:
-    log_dimension_error(TypeError("Mismatch"), dims_a, dims_b)
-    raise TypeError("...")
+# In your __add__ or __sub__ method (or similar)
+def __add__(self, other):
+    # Ensure you are referencing the attributes of the current and other object
+    dims_a = self.dimensions 
+    dims_b = other.dimensions if hasattr(other, 'dimensions') else None
+
+    if dims_a != dims_b: # This is line 110
+        from phystensor.io.logging import log_dimension_error
+        log_dimension_error(dims_a, dims_b)
+    
+    # ... rest of your logic
