@@ -2,8 +2,6 @@
 
 import phystensor as pt
 
-from phystensor.units.constants import c
-
 
 def main() -> None:
     """Run the basic Phystensor demonstration."""
@@ -31,7 +29,7 @@ def main() -> None:
     # Adding incompatible physical quantities should fail.
     # ------------------------------------------------------------------
     try:
-        distance + time
+        _ = distance + time
     except pt.core.exceptions.DimensionalityError as error:
         print(f"\nCaught Expected Error: {error}")
 
@@ -42,6 +40,7 @@ def main() -> None:
         [10.0, 20.0, 30.0],
         "N",
     )
+
     mass = pt.q(5.0, "kg")
 
     acceleration = forces / mass
@@ -51,7 +50,7 @@ def main() -> None:
     # ------------------------------------------------------------------
     # 5. Convert derived quantities.
     # ------------------------------------------------------------------
-    speed_kmh = pt.utils.conversions.TensorConverter.scale_to(
+    speed_kmh = pt.convert(
         velocity,
         "km/h",
     )
@@ -59,9 +58,11 @@ def main() -> None:
     print(f"Velocity in km/h: {speed_kmh}")
 
     # ------------------------------------------------------------------
-    # 6. Use dimension-aware physical constants.
+    # 6. Use physical constants.
     # E = mc²
     # ------------------------------------------------------------------
+    c = pt.q(299792458, "m/s")
+
     energy = mass * (c**2)
 
     print(f"\nRest Energy (E = mc²): {energy}")
