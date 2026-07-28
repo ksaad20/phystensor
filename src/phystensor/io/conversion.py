@@ -1,50 +1,94 @@
+"""Unit conversion utilities for PhysicalTensor."""
+
+from typing import Any
+
 import numpy as np
-from typing import Any, Union, List
+
 from phystensor.core.tensor import PhysicalTensor
 from phystensor.units.registry import registry
 
+
 class ConversionEngine:
-    """
-    Handles the movement of data between human-readable units 
-    and the high-performance SI-base PhysicalTensor.
-    """
+    """Convert between user-facing units and SI-base PhysicalTensor objects."""
 
     @staticmethod
     def to_tensor(data: Any, unit_symbol: str) -> PhysicalTensor:
         """
-        Creates a PhysicalTensor from raw data by normalizing it 
-        to SI base using the registry.
+        Create a PhysicalTensor by converting input data to SI base units.
+
+        Parameters
+        ----------
+        data
+            Numeric scalar or array-like input.
+        unit_symbol
+            Unit symbol registered in the unit registry.
+
+        Returns
+        -------
+        PhysicalTensor
+            Tensor stored internally in SI base units.
         """
         unit = registry.lookup(unit_symbol)
-        
-        # Convert raw data to SI base values
-        # e.g., if data is 10 and unit is 'km', base_data becomes 10000
+
         base_data = unit.to_base(np.asanyarray(data))
-        
+
         return PhysicalTensor(base_data, unit.dimensions)
 
     @staticmethod
-    def from_tensor(tensor: PhysicalTensor, target_unit_symbol: str) -> np.ndarray:
+    def from_tensor(
+        tensor: PhysicalTensor,
+        target_unit_symbol: str,
+    ) -> np.ndarray:
         """
-        Converts an SI-base PhysicalTensor back into a specific unit.
-        Verifies dimensional integrity before conversion.
+        Convert an SI-base PhysicalTensor into the requested unit.
+
+        Raises
+        ------
+        TypeError
+            If the tensor dimensions do not match the target unit.
         """
         target_unit = registry.lookup(target_unit_symbol)
-        
+
         if tensor.dimensions != target_unit.dimensions:
             raise TypeError(
-                f"Conversion Mismatch: Cannot convert {tensor.dimensions.vector} "
-                f"to '{target_unit_symbol}' ({target_unit.dimensions.vector})"
+                "Conversion mismatch: cannot convert "
+                f"{tensor.dimensions.vector} "
+                f"to '{target_unit_symbol}' "
+                f"({target_unit.dimensions.vector})."
             )
-            
+
         return target_unit.from_base(tensor.data)
 
     @staticmethod
-    def convert_batch(tensors: List[PhysicalTensor], target_unit: str) -> List[np.ndarray]:
-        """High-frequency batch conversion for sensor streams or simulation frames."""
-        return [ConversionEngine.from_tensor(t, target_unit) for t in tensors]
+    def convert_batch(
+        tensors: list[PhysicalTensor],
+        target_unit: str,
+    ) -> list[np.ndarray]:
+        """
+        Convert multiple tensors into the same target unit.
 
-# Global Factory Alias for "Low Labor" usage
+        Parameters
+        ----------
+        tensors
+            List of PhysicalTensor objects.
+        target_unit
+            Target unit symbol.
+
+        Returns
+        -------
+        list[np.ndarray]
+            Converted values.
+        """
+        return [
+            ConversionEngine.from_tensor(tensor, target_unit)
+            for tensor in tensors
+        ]
+
+
 def quantity(value: Any, unit: str) -> PhysicalTensor:
-    """The primary entry point for creating unit-aware data."""
+    """
+    Create a PhysicalTensor from a numeric value and unit.
+
+    This is the primary public factory function.
+    """
     return ConversionEngine.to_tensor(value, unit)
