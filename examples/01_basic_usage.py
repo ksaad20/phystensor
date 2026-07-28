@@ -1,6 +1,7 @@
 """Example 01: Basic usage of Phystensor."""
 
 import phystensor as pt
+
 from phystensor.units.constants import c
 
 
@@ -8,39 +9,61 @@ def main() -> None:
     """Run the basic Phystensor demonstration."""
     print("--- Phystensor Example 01: Basic Usage ---")
 
-    # 1. Instantiation via the 'q' (quantity) alias.
+    # ------------------------------------------------------------------
+    # 1. Create unit-aware quantities.
+    # ------------------------------------------------------------------
     distance = pt.q(100, "m")
-    time = pt.q(9.58, "s")  # Usain Bolt's world-record pace
+    time = pt.q(9.58, "s")
 
     print(f"Distance: {distance}")
     print(f"Time: {time}")
 
-    # 2. Automatic dimensional inference.
+    # ------------------------------------------------------------------
+    # 2. Automatic dimensional derivation.
+    # Velocity = distance / time
+    # ------------------------------------------------------------------
     velocity = distance / time
+
     print(f"Calculated Velocity: {velocity}")
 
-    # 3. Unit safety.
+    # ------------------------------------------------------------------
+    # 3. Dimensional safety.
+    # Adding incompatible physical quantities should fail.
+    # ------------------------------------------------------------------
     try:
         distance + time
     except pt.core.exceptions.DimensionalityError as error:
         print(f"\nCaught Expected Error: {error}")
 
-    # 4. NumPy-compatible arrays.
-    forces = pt.q([10.0, 20.0, 30.0], "N")
+    # ------------------------------------------------------------------
+    # 4. NumPy-compatible tensor operations.
+    # ------------------------------------------------------------------
+    forces = pt.q(
+        [10.0, 20.0, 30.0],
+        "N",
+    )
     mass = pt.q(5.0, "kg")
 
     acceleration = forces / mass
+
     print(f"\nAcceleration Array: {acceleration}")
 
-    # 5. Unit conversion.
+    # ------------------------------------------------------------------
+    # 5. Convert derived quantities.
+    # ------------------------------------------------------------------
     speed_kmh = pt.utils.conversions.TensorConverter.scale_to(
         velocity,
         "km/h",
     )
+
     print(f"Velocity in km/h: {speed_kmh}")
 
-    # 6. Using physical constants.
+    # ------------------------------------------------------------------
+    # 6. Use dimension-aware physical constants.
+    # E = mc²
+    # ------------------------------------------------------------------
     energy = mass * (c**2)
+
     print(f"\nRest Energy (E = mc²): {energy}")
 
 
