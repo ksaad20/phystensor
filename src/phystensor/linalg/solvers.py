@@ -1,8 +1,17 @@
+from __future__ import annotations
+
 import numpy as np
+
 from phystensor.core.tensor import PhysicalTensor
+from phystensor.units.dimensions import Dimensions
+
 
 class PhysicsSolvers:
     """Solves physical systems of equations."""
+
+    def __init__(self, *args, **kwargs) -> None:
+        """Accept accidental positional args from module-level wiring."""
+        pass
 
     @staticmethod
     def solve(a: PhysicalTensor, b: PhysicalTensor) -> PhysicalTensor:
