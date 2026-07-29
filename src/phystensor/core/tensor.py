@@ -194,11 +194,7 @@ class PhysicalTensor:
         return ()
 
     @property
-    def T(self) -> PhysicalTensor:
-        """
-        Transposition preserves physical dimensions.
-        """
-        return PhysicalTensor(
-            np.asarray(self.data).T,
-            self.dimensions,
-               )
+    def T(self) -> PhysicalTensor:  # noqa: N802
+        """Transposition preserves physical dimensions."""
+        return PhysicalTensor(self.data.T, self.dimensions)
+        )
