@@ -48,7 +48,7 @@ __all__ = [
     "linalg",
     "utils",
     "io",
-    "c", "G", "h", "e", "k_B", "N_A",
+    "c", "G", "h", "e", "k_b", "N_A",
     "eps_0", "mu_0", "Z_0",
     "g_n", "M_sun", "AU",
     "PI", "TAU", "E",
