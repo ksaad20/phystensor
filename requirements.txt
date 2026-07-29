@@ -37,7 +37,7 @@ pylint>=2.17.0,<4.0.0         # Deep static analysis, docstring & architecture c
 # ------------------------------------------------------------------------------
 build>=1.5.0,<2.0.0          # PEP-517 builder (replaces python setup.py sdist)
 twine>=4.0.0,<6.0.0           # Secure, verified uploads to PyPI
-setuptools>=68.0.0,<76.0.0    # Package discovery, entry points, namespace packages
+setuptools>=68.0.0,<84.0.0    # Package discovery, entry points, namespace packages
 wheel>=0.41.0,<0.50.0         # Binary wheel generation
 
 # ------------------------------------------------------------------------------
