@@ -1,11 +1,3 @@
-"""
-phystensor: The Century-Proof Industrial Physics Engine.
-Built for high-scalable inference, maritime compliance, EEE engineering,
-and multi-disciplinary research.
-
-(c) 2026 Xylema Private Limited.
-"""
-
 import logging
 import os
 
