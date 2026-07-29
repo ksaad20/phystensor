@@ -13,7 +13,7 @@
 numpy>=1.24.0,<3.0.0          # ND-array backend, linear algebra, broadcasting
 scipy>=1.10.0,<2.0.0          # Sparse solvers, optimize, integrate, special functions
 sympy>=1.14.0,<2.0.0            # Symbolic dimensional analysis, unit algebra, simplification
-matplotlib>=3.7.0,<4.0.0      # Plotting backend for tensor visualisations & examples
+matplotlib>=3.10.9,<4.0.0      # Plotting backend for tensor visualisations & examples
 
 # ------------------------------------------------------------------------------
 # TESTING  (consumed by ci.yml)
@@ -28,17 +28,17 @@ hypothesis>=6.163.0,<7.0.0     # Property-based testing (fuzz tensor invariants)
 # ------------------------------------------------------------------------------
 black>=26.5.1,<27.0.0         # Uncompromising code formatter
 flake8>=7.3.0,<8.0.0          # PEP-8 style & complexity enforcement
-mypy>=1.5.0,<2.0.0            # Static type checker with strict mode
-isort>=8.0.1,<9.0.0          # Import sorting (black-compatible profile)
+mypy>=2.3.0,<3.0.0            # Static type checker with strict mode
+isort>=5.12.0,<6.0.0          # Import sorting (black-compatible profile)
 pylint>=4.0.6,<5.0.0         # Deep static analysis, docstring & architecture checks
 
 # ------------------------------------------------------------------------------
 # BUILD & PUBLISH  (consumed by publish.yml)
 # ------------------------------------------------------------------------------
 build>=1.5.0,<2.0.0          # PEP-517 builder (replaces python setup.py sdist)
-twine>=4.0.0,<6.0.0           # Secure, verified uploads to PyPI
+twine>=7.0.0,<8.0.0           # Secure, verified uploads to PyPI
 setuptools>=68.0.0,<84.0.0    # Package discovery, entry points, namespace packages
-wheel>=0.41.0,<0.50.0         # Binary wheel generation
+wheel>=0.47.0,<0.50.0         # Binary wheel generation
 
 # ------------------------------------------------------------------------------
 # OPTIONAL: DEVELOPMENT EXTRAS
