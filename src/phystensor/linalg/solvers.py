@@ -10,9 +10,6 @@ class PhysicsSolvers:
     """Solves physics-aware systems of equations."""
 
     def __init__(self, *args, **kwargs) -> None:
-        """
-        Accept accidental positional arguments from module-level wiring.
-        """
         pass
 
     @staticmethod
@@ -21,7 +18,7 @@ class PhysicsSolvers:
         Solves Ax = B for x.
 
         Dimension logic:
-            dim(x) = dim(b) - dim(a)
+            dim(x) = dim(b) / dim(a)
         """
         # Scalar case (e.g. Ohm's law: I = V / R)
         if np.ndim(a.data) < 2 and np.ndim(b.data) < 2:
@@ -31,49 +28,18 @@ class PhysicsSolvers:
 
         return PhysicalTensor(
             res_data,
-            b.dimensions - a.dimensions,
+            b.dimensions / a.dimensions,
         )
 
     @staticmethod
     def inv(tensor: PhysicalTensor) -> PhysicalTensor:
-        """
-        Matrix inversion.
-
-        Dimension logic:
-            Result dimension = reciprocal dimension
-            (all dimension exponents are negated).
-        """
         res_data = np.linalg.inv(tensor.data)
-
-        new_vec = tuple(
-            -value for value in tensor.dimensions.vector
-        )
-
-        return PhysicalTensor(
-            res_data,
-            Dimensions(new_vec),
-        )
+        new_vec = tuple(-value for value in tensor.dimensions.vector)
+        return PhysicalTensor(res_data, Dimensions(new_vec))
 
     @staticmethod
     def det(tensor: PhysicalTensor) -> PhysicalTensor:
-        """
-        Calculate determinant.
-
-        Dimension logic:
-            dim(det) = dim(tensor) * N
-
-        where N is the matrix order.
-        """
         order = tensor.data.shape[0]
-
         res_data = np.linalg.det(tensor.data)
-
-        new_vec = tuple(
-            value * order
-            for value in tensor.dimensions.vector
-        )
-
-        return PhysicalTensor(
-            res_data,
-            Dimensions(new_vec),
-        )
+        new_vec = tuple(value * order for value in tensor.dimensions.vector)
+        return PhysicalTensor(res_data, Dimensions(new_vec))
