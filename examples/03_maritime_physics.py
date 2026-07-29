@@ -13,13 +13,13 @@ def vessel_performance_analysis():
     displaced_volume = pt.q(45000, "m^3")
 
     buoyant_force = water_density * g_n * displaced_volume
-    print(f"Total Displacement (Volume): {displaced_volume}")
-    print(f"Buoyant Force: {buoyant_force}")
+    print("Total Displacement (Volume): {displaced_volume}")
+    print("Buoyant Force: {buoyant_force}")
 
     displacement_ton = pt.utils.conversions.TensorConverter.scale_to(
         buoyant_force / g_n, "ton"
     )
-    print(f"Vessel Deadweight (DWT equivalent): {displacement_ton}")
+    print("Vessel Deadweight (DWT equivalent): {displacement_ton}")
 
     # 2. Hull Resistance (Simplified Admiralty Coefficient Method)
     speed = pt.q(14, "kn")
@@ -30,8 +30,8 @@ def vessel_performance_analysis():
     ) / admiralty_coefficient
 
     p_kw = pt.q(power_required.data, "kW")
-    print(f"\nTarget Speed: {speed}")
-    print(f"Estimated Propulsion Power: {p_kw}")
+    print("\nTarget Speed: {speed}")
+    print("Estimated Propulsion Power: {p_kw}")
 
     # 3. Fuel Consumption & Operational Cost
     sfoc = pt.q(185, "g/kWh")
@@ -40,7 +40,7 @@ def vessel_performance_analysis():
     fuel_rate_ton_day = pt.utils.conversions.TensorConverter.scale_to(
         fuel_rate, "ton/day"
     )
-    print(f"Fuel Consumption Rate: {fuel_rate_ton_day}")
+    print("Fuel Consumption Rate: {fuel_rate_ton_day}")
 
     # 4. Maritime Compliance: Carbon Intensity Indicator (CII)
     voyage_distance = pt.q(500, "nmi")
@@ -54,9 +54,9 @@ def vessel_performance_analysis():
         cii_metric, "g/(ton*nmi)"
     )
 
-    print(f"\n--- Voyage Compliance ---")
-    print(f"Total CO2 Emissions: {total_co2}")
-    print(f"CII Result: {cii_scaled}")
+    print("\n--- Voyage Compliance ---")
+    print("Total CO2 Emissions: {total_co2}")
+    print("CII Result: {cii_scaled}")
 
 
 if __name__ == "__main__":
