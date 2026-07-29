@@ -12,6 +12,6 @@ __all__ = [
     "TAU",
     "E",
     "DEG_TO_RAD",
+    "conversions",
     "TensorConverter",
-    "conversions"
 ]
