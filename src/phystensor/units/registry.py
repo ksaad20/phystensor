@@ -243,3 +243,8 @@ registry.define("t",   Dimensions((0, 1, 0, 0, 0, 0, 0)), 1000.0)
 registry.define("kn",  Dimensions((1, 0, -1, 0, 0, 0, 0)), 0.514444444)
 registry.define("degC", Dimensions((0, 0, 0, 0, 1, 0, 0)), 1.0, 273.15)
 registry.define("degF", Dimensions((0, 0, 0, 0, 1, 0, 0)), 5.0 / 9.0, 255.372222)
+
+
+# --- COMMON ALIASES ---
+registry.define("meter",     Dimensions((1, 0, 0, 0, 0, 0, 0)), 1.0)
+registry.define("femtometer", Dimensions((1, 0, 0, 0, 0, 0, 0)), 1e-15)
