@@ -1,12 +1,3 @@
-
-"""
-phystensor: The Century-Proof Industrial Physics Engine.
-Built for high-scalable inference, maritime compliance, EEE engineering, 
-and multi-disciplinary research.
-
-(c) 2026 Xylema Private Limited.
-"""
-
 # 1. THE CORE IDENTITY
 # Expose the primary class and the factory function for rapid development.
 from phystensor.core.tensor import PhysicalTensor
@@ -23,7 +14,7 @@ from phystensor import io
 # 3. GLOBAL ENGINEERING CONSTANTS
 # Direct access to the physics and math required for immediate calculation.
 from phystensor.units.constants import (
-    c, G, h, e, k_B, N_A,      # Fundamental
+    c, G, h, e, k_b, N_A,      # Fundamental
     eps_0, mu_0, Z_0,         # EEE / Electromagnetics
     g_n, M_sun, AU            # Aerospace / Astrophysics
 )
