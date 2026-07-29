@@ -8,5 +8,6 @@ __all__ = [
     "PI",
     "TAU",
     "E",
-    "DEG_TO_RAD"
+    "DEG_TO_RAD",
+    "conversions"
 ]
