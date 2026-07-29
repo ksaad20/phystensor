@@ -15,7 +15,7 @@ from phystensor.io.conversion import quantity
 # 2. THE NAMESPACE BRIDGE
 # Allow users to access sub-modules directly (e.g., pt.linalg.solve).
 from phystensor import core
-from phystensor import units
+from . import registry
 from phystensor import linalg
 from phystensor import utils
 from phystensor import io
