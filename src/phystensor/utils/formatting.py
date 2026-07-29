@@ -1,6 +1,7 @@
 import numpy as np
 from phystensor.units.dimensions import Dimensions
 
+
 class PhysicsFormatter:
     """Handles the visual representation of physical data."""
     
@@ -14,7 +15,8 @@ class PhysicsFormatter:
         neg = []
         
         for label, exp in zip(cls.LABELS, dims.vector):
-            if exp == 0: continue
+            if exp == 0:
+                continue
             if exp > 0:
                 pos.append(f"{label}^{exp}" if exp != 1 else label)
             else:
