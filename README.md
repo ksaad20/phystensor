@@ -17,6 +17,7 @@
 ![Build](https://img.shields.io/github/actions/workflow/status/OWNER/phystensor/ci.yml?branch=main)
 ![PyPI](https://img.shields.io/pypi/v/phystensor)
 ![Typing](https://img.shields.io/badge/typing-strict-blueviolet)
+[![CI](https://github.com/ksaad20/phystensor/workflows/CI/badge.svg)](https://github.com/ksaad20/phystensor/actions)
 
 </p>
 
