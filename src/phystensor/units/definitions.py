@@ -1,8 +1,8 @@
-from typing import Dict, Any, Final
+from typing import dict, Any, Final
 from phystensor.units.dimensions import Dimensions
 
 # The SI 7-Vector: [L, M, T, I, Θ, N, J]
-UNIT_DEFINITIONS: Final[Dict[str, Dict[str, Any]]] = {
+UNIT_DEFINITIONS: Final[dict[str, dict[str, Any]]] = {
     # --- BASE SI ---
     "m":   {"dim": (1, 0, 0, 0, 0, 0, 0), "scale": 1.0},
     "kg":  {"dim": (0, 1, 0, 0, 0, 0, 0), "scale": 1.0},
