@@ -11,7 +11,7 @@
 # These packages are imported directly by the library at runtime.
 # ------------------------------------------------------------------------------
 numpy>=1.24.0,<3.0.0          # ND-array backend, linear algebra, broadcasting
-scipy>=1.10.0,<2.0.0          # Sparse solvers, optimize, integrate, special functions
+scipy>=1.15.3,<2.0.0          # Sparse solvers, optimize, integrate, special functions
 sympy>=1.14.0,<2.0.0            # Symbolic dimensional analysis, unit algebra, simplification
 matplotlib>=3.10.9,<4.0.0      # Plotting backend for tensor visualisations & examples
 
