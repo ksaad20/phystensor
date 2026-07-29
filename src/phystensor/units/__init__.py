@@ -1,33 +1,51 @@
-# 1. THE CORE IDENTITY
-# Expose the primary class and the factory function for rapid development.
+from __future__ import annotations
+
+import logging
+import os
+
+from phystensor import core
+from phystensor import io
+from phystensor import linalg
+from phystensor import utils
 from phystensor.core.tensor import PhysicalTensor
 from phystensor.io.conversion import quantity
+from phystensor.io.logging import logger
+from phystensor.io.version import __version__, get_version_info
+from phystensor.units.constants import (
+    AU,
+    G,
+    M_sun,
+    N_A,
+    c,
+    e,
+    eps_0,
+    g_n,
+    h,
+    k_b,
+    mu_0,
+    Z_0,
+)
+from phystensor.utils.math_const import E, PI, TAU
+
+from . import registry
+
+
+# 1. THE CORE IDENTITY
+# Expose the primary class and the factory function for rapid development.
+tensor = PhysicalTensor
+q = quantity
 
 # 2. THE NAMESPACE BRIDGE
 # Allow users to access sub-modules directly (e.g., pt.linalg.solve).
-from phystensor import core
-from . import registry
-from phystensor import linalg
-from phystensor import utils
-from phystensor import io
 
 # 3. GLOBAL ENGINEERING CONSTANTS
 # Direct access to the physics and math required for immediate calculation.
-from phystensor.units.constants import (
-    c, G, h, e, k_b, N_A,      # Fundamental
-    eps_0, mu_0, Z_0,         # EEE / Electromagnetics
-    g_n, M_sun, AU            # Aerospace / Astrophysics
-)
-from phystensor.utils.math_const import PI, TAU, E
 
 # 4. SYSTEM METADATA
-from phystensor.io.version import __version__, get_version_info
 
 # 5. FOUNDER ALIASES
 # High-frequency aliases for "Low Labor" coding.
 # 'q' is the industry standard for quick unit-tensor instantiation.
-tensor = PhysicalTensor
-q = quantity
 
 __all__ = [
     "PhysicalTensor",
@@ -39,24 +57,31 @@ __all__ = [
     "linalg",
     "utils",
     "io",
-    "c", "G", "h", "e", "k_b", "N_A",
-    "eps_0", "mu_0", "Z_0",
-    "g_n", "M_sun", "AU",
-    "PI", "TAU", "E",
+    "c",
+    "G",
+    "h",
+    "e",
+    "k_b",
+    "N_A",
+    "eps_0",
+    "mu_0",
+    "Z_0",
+    "g_n",
+    "M_sun",
+    "AU",
+    "PI",
+    "TAU",
+    "E",
     "__version__",
-    "get_version_info"
+    "get_version_info",
 ]
 
 # 6. INDUSTRIAL LOGGING INITIALIZATION
-import logging
-from phystensor.io.logging import logger
-
-# Set a NullHandler by default to prevent "No handler found" warnings 
+# Set a NullHandler by default to prevent "No handler found" warnings
 # in downstream enterprise applications.
 logging.getLogger("phystensor").addHandler(logging.NullHandler())
 
 # Print diagnostic banner if in a verbose/dev environment
-import os
 if os.getenv("PHYSTENSOR_VERBOSE") == "1":
-    print(f"--- Phystensor Engine v{__version__} ---")
+    print("--- Phystensor Engine v" + __version__ + " ---")
     print("Industrial SI-Base Logic: Active")
