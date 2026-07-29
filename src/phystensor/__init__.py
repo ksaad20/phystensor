@@ -1,3 +1,4 @@
+from phystensor.io.version import __version__
 import logging
 import os
 
