@@ -14,9 +14,10 @@ PT = TypeVar("PT", bound=PhysicalTensor)
 # A type representing any numeric input that can be vectorized by NumPy.
 NumericData = float | int | np.ndarray | list
 
-# A function that performs a mathematical transformation while 
+# A function that performs a mathematical transformation while
 # maintaining the physical identity of the data.
 PhysicsTransform = Callable[[np.ndarray], np.ndarray]
+
 
 @runtime_checkable
 class NumericScalable(Protocol):
@@ -24,5 +25,6 @@ class NumericScalable(Protocol):
     A Protocol for objects that support basic linear scaling.
     Useful for validating external plugins before they enter the registry.
     """
+
     def __mul__(self, other: float) -> Any: ...
     def __truediv__(self, other: float) -> Any: ...
