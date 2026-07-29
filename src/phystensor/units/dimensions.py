@@ -1,27 +1,54 @@
-from dataclasses import dataclass
-from typing import Tuple
+from __future__ import annotations
 
-# The 7 SI Base Dimensions (The Order is Immutable)
-# 0: Length (L) - meter
-# 1: Mass (M) - kilogram
-# 2: Time (T) - second
-# 3: Electric Current (I) - ampere
-# 4: Thermodynamic Temperature (Θ) - kelvin
-# 5: Amount of Substance (N) - mole
-# 6: Luminous Intensity (J) - candela
+import numpy as np
 
-@dataclass(frozen=True)
+
 class Dimensions:
-    """
-    The fundamental representation of physical dimensions.
-    Exponents are stored as a tuple of 7 integers/fractions.
-    """
-    vector: Tuple[int, ...] = (0, 0, 0, 0, 0, 0, 0)
+    """Physical dimensions as a 7-vector (L, M, T, I, Θ, N, J)."""
 
-    def __add__(self, other):
-        # Adding dimensions = Multiplying units (e.g., L * L = L^2)
-        return Dimensions(tuple(a + b for a, b in zip(self.vector, other.vector)))
+    def __init__(
+        self,
+        vector: tuple[int, ...] | list[int] | np.ndarray,
+    ) -> None:
+        self.vector = tuple(int(v) for v in vector)
 
-    def __sub__(self, other):
-        # Subtracting dimensions = Dividing units (e.g., L / T = L^1 T^-1)
-        return Dimensions(tuple(a - b for a, b in zip(self.vector, other.vector)))
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, Dimensions):
+            return NotImplemented
+        return self.vector == other.vector
+
+    def __hash__(self) -> int:
+        return hash(self.vector)
+
+    def __add__(self, other: Dimensions) -> Dimensions:
+        if not isinstance(other, Dimensions):
+            return NotImplemented
+        if self.vector != other.vector:
+            raise ValueError("Incompatible dimensions for addition")
+        return Dimensions(self.vector)
+
+    def __sub__(self, other: Dimensions) -> Dimensions:
+        return self.__add__(other)
+
+    def __mul__(self, other: Dimensions) -> Dimensions:
+        if not isinstance(other, Dimensions):
+            return NotImplemented
+        return Dimensions(
+            tuple(a + b for a, b in zip(self.vector, other.vector))
+        )
+
+    def __truediv__(self, other: Dimensions) -> Dimensions:
+        if not isinstance(other, Dimensions):
+            return NotImplemented
+        return Dimensions(
+            tuple(a - b for a, b in zip(self.vector, other.vector))
+        )
+
+    def __pow__(self, exp: int | float) -> Dimensions:
+        return Dimensions(tuple(int(a * exp) for a in self.vector))
+
+    def __neg__(self) -> Dimensions:
+        return Dimensions(tuple(-a for a in self.vector))
+
+    def __repr__(self) -> str:
+        return f"Dimensions({self.vector})"
