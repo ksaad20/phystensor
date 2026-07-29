@@ -23,12 +23,16 @@ class Dimensions:
     def __add__(self, other: Dimensions) -> Dimensions:
         if not isinstance(other, Dimensions):
             return NotImplemented
-        if self.vector != other.vector:
-            raise ValueError("Incompatible dimensions for addition")
-        return Dimensions(self.vector)
+        return Dimensions(
+            tuple(a + b for a, b in zip(self.vector, other.vector))
+        )
 
     def __sub__(self, other: Dimensions) -> Dimensions:
-        return self.__add__(other)
+        if not isinstance(other, Dimensions):
+            return NotImplemented
+        return Dimensions(
+            tuple(a - b for a, b in zip(self.vector, other.vector))
+        )
 
     def __mul__(self, other: Dimensions) -> Dimensions:
         if not isinstance(other, Dimensions):
