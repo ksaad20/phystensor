@@ -3,7 +3,7 @@ from typing import Dict, Final
 # Metric (SI) Prefixes: Defined as multipliers relative to the base unit.
 # These follow the international standard (BIPM).
 
-PREFIXES: Final[Dict[str, float]] = {
+PREFIXES: Final[dict[str, float]] = {
     # Large Scales (Macro/Cosmic)
     "Q": 1e30,   # quetta
     "R": 1e27,   # ronna
@@ -39,7 +39,7 @@ PREFIXES: Final[Dict[str, float]] = {
 # Binary Prefixes: Critical for Technologist-level computing and data-rate physics.
 # These are used for memory-intensive maritime data processing (MiB, GiB).
 
-BINARY_PREFIXES: Final[Dict[str, float]] = {
+BINARY_PREFIXES: Final[dict[str, float]] = {
     "Ki": 1024.0,
     "Mi": 1024.0**2,
     "Gi": 1024.0**3,
