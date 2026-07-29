@@ -8,9 +8,9 @@ def test_dimension_addition():
 
 def test_dimension_multiplication():
     # L * M = LM
-    l = Dimensions((1, 0, 0, 0, 0, 0, 0))
+    length = Dimensions((1, 0, 0, 0, 0, 0, 0))
     m = Dimensions((0, 1, 0, 0, 0, 0, 0))
-    result = l * m
+    result = length * m
     assert result.vector == (1, 1, 0, 0, 0, 0, 0)
 
 def test_dimension_inversion():
