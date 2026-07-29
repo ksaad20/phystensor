@@ -18,7 +18,7 @@ hbar = PhysicalTensor(6.62607015e-34 / (2 * PI), Dimensions((2, 1, -1, 0, 0, 0, 
 e = PhysicalTensor(1.602176634e-19, Dimensions((0, 0, 1, 1, 0, 0, 0)))
 
 # Boltzmann Constant [L^2 M T^-2 Theta^-1]
-k_B = PhysicalTensor(1.380649e-23, Dimensions((2, 1, -2, 0, -1, 0, 0)))
+k_b = PhysicalTensor(1.380649e-23, Dimensions((2, 1, -2, 0, -1, 0, 0)))
 
 # Avogadro Constant [N^-1]
 N_A = PhysicalTensor(6.02214076e23, Dimensions((0, 0, 0, 0, 0, -1, 0)))
