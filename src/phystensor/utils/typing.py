@@ -1,12 +1,18 @@
-from typing import TypeVar, Union, Callable, Any, Protocol, runtime_checkable
+from __future__ import annotations
+
+from collections.abc import Callable
+from typing import TypeVar, Any, Protocol, runtime_checkable
+
 import numpy as np
+
+from phystensor.core.tensor import PhysicalTensor
 
 # Generic Type for any class inheriting from PhysicalTensor.
 # This allows 'PreserveDimensions' decorators to return the correct subclass.
-PT = TypeVar("PT", bound="PhysicalTensor")
+PT = TypeVar("PT", bound=PhysicalTensor)
 
 # A type representing any numeric input that can be vectorized by NumPy.
-NumericData = Union[float, int, np.ndarray, list]
+NumericData = float | int | np.ndarray | list
 
 # A function that performs a mathematical transformation while 
 # maintaining the physical identity of the data.
