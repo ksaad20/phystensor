@@ -40,7 +40,8 @@ def vessel_performance_analysis():
     
     # Fuel Flow Rate = Power * SFOC
     fuel_rate = p_kw * sfoc
-    print(f"Fuel Consumption Rate: {pt.utils.conversions.TensorConverter.scale_to(fuel_rate, 'ton/day')}")
+    print(f"Fuel Consumption Rate: 
+    {pt.utils.conversions.TensorConverter.scale_to(fuel_rate, 'ton/day')}")
 
     # 4. Maritime Compliance: Carbon Intensity Indicator (CII)
     # CII = (Fuel_Mass * Carbon_Factor) / (Capacity * Distance)
