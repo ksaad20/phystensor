@@ -197,4 +197,3 @@ class PhysicalTensor:
     def T(self) -> PhysicalTensor:  # noqa: N802
         """Transposition preserves physical dimensions."""
         return PhysicalTensor(self.data.T, self.dimensions)
-        )
