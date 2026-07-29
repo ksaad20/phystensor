@@ -23,7 +23,11 @@ class PhysicsSolvers:
         Dimension logic:
             dim(x) = dim(b) - dim(a)
         """
-        res_data = np.linalg.solve(a.data, b.data)
+        # Scalar case (e.g. Ohm's law: I = V / R)
+        if np.ndim(a.data) < 2 and np.ndim(b.data) < 2:
+            res_data = b.data / a.data
+        else:
+            res_data = np.linalg.solve(a.data, b.data)
 
         return PhysicalTensor(
             res_data,
