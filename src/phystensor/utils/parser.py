@@ -1,7 +1,7 @@
 import re
-from typing import Dict
 from phystensor.units.dimensions import Dimensions
 from phystensor.units.registry import registry
+
 
 class DimParser:
     """
