@@ -1,4 +1,4 @@
-from typing import Dict, Final
+from typing import dict, Final
 
 # Metric (SI) Prefixes: Defined as multipliers relative to the base unit.
 # These follow the international standard (BIPM).
