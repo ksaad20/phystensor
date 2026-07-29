@@ -1,5 +1,13 @@
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from phystensor.core.tensor import PhysicalTensor
+
 from phystensor.core.tensor import PhysicalTensor
 from phystensor.units.registry import registry
+
 
 class TensorConverter:
     """
@@ -14,9 +22,11 @@ class TensorConverter:
         Example: Convert a tensor in 'meters' to 'kilometers'.
         """
         target_unit = registry.lookup(target_unit_symbol)
-        
+
         if tensor.dimensions != target_unit.dimensions:
-            raise TypeError(f"Incompatible Dimensions: {tensor.dimensions} vs {target_unit_symbol}")
+            raise TypeError(
+                f"Incompatible Dimensions: {tensor.dimensions} vs {target_unit_symbol}"
+            )
 
         # Scale data: (Data in Base SI) / (Target Unit Scale)
         new_data = target_unit.from_base(tensor.data)
