@@ -51,4 +51,4 @@ class Dimensions:
         return Dimensions(tuple(-a for a in self.vector))
 
     def __repr__(self) -> str:
-        return f"Dimensions({self.vector})"
+        return "Dimensions(" + str(self.vector) + ")"
