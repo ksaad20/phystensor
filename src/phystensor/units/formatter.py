@@ -79,4 +79,8 @@ class ANSIColorFormatter:
     @staticmethod
     def highlight(unit_str: str) -> str:
         # Simple color-coding for high-visibility debugging
-        return f"{ANSIColorFormatter.COLORS['Length']}{unit_str}{ANSIColorFormatter.COLORS['RESET']}"
+                return (
+            f"{ANSIColorFormatter.COLORS['Length']}"
+            f"{unit_str}"
+            f"{ANSIColorFormatter.COLORS['RESET']}"
+                )
