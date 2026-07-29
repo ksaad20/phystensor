@@ -48,6 +48,8 @@ def vessel_performance_analysis():
 
     # Fuel Flow Rate = Power * SFOC
     fuel_rate = p_kw * sfoc
+        # Fuel Flow Rate = Power * SFOC
+    fuel_rate = p_kw * sfoc
     fuel_rate_ton_day = pt.utils.conversions.TensorConverter.scale_to(
         fuel_rate, "ton/day"
     )
