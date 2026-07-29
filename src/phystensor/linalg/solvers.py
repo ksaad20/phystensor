@@ -7,38 +7,69 @@ from phystensor.units.dimensions import Dimensions
 
 
 class PhysicsSolvers:
-    """Solves physical systems of equations."""
+    """Solves physics-aware systems of equations."""
 
     def __init__(self, *args, **kwargs) -> None:
-        """Accept accidental positional args from module-level wiring."""
+        """
+        Accept accidental positional arguments from module-level wiring.
+        """
         pass
 
     @staticmethod
     def solve(a: PhysicalTensor, b: PhysicalTensor) -> PhysicalTensor:
         """
         Solves Ax = B for x.
-        Dimension logic: dim(x) = dim(b) - dim(a).
+
+        Dimension logic:
+            dim(x) = dim(b) - dim(a)
         """
         res_data = np.linalg.solve(a.data, b.data)
-        return PhysicalTensor(res_data, b.dimensions - a.dimensions)
+
+        return PhysicalTensor(
+            res_data,
+            b.dimensions - a.dimensions,
+        )
 
     @staticmethod
     def inv(tensor: PhysicalTensor) -> PhysicalTensor:
         """
         Matrix inversion.
-        Dimension logic: Result is the reciprocal (negated vector).
+
+        Dimension logic:
+            Result dimension = reciprocal dimension
+            (all dimension exponents are negated).
         """
         res_data = np.linalg.inv(tensor.data)
-        new_vec = tuple(-v for v in tensor.dimensions.vector)
-        return PhysicalTensor(res_data, Dimensions(new_vec))
+
+        new_vec = tuple(
+            -value for value in tensor.dimensions.vector
+        )
+
+        return PhysicalTensor(
+            res_data,
+            Dimensions(new_vec),
+        )
 
     @staticmethod
     def det(tensor: PhysicalTensor) -> PhysicalTensor:
         """
-        Determinant. 
-        Dimension logic: dim(det) = dim(tensor) * N (where N is matrix order).
+        Calculate determinant.
+
+        Dimension logic:
+            dim(det) = dim(tensor) * N
+
+        where N is the matrix order.
         """
         order = tensor.data.shape[0]
+
         res_data = np.linalg.det(tensor.data)
-        new_vec = tuple(v * order for v in tensor.dimensions.vector)
-        return PhysicalTensor(res_data, Dimensions(new_vec))
+
+        new_vec = tuple(
+            value * order
+            for value in tensor.dimensions.vector
+        )
+
+        return PhysicalTensor(
+            res_data,
+            Dimensions(new_vec),
+        )
