@@ -19,7 +19,7 @@ matplotlib>=3.10.9,<4.0.0      # Plotting backend for tensor visualisations & ex
 # TESTING  (consumed by ci.yml)
 # ------------------------------------------------------------------------------
 pytest>=7.4.0,<10.0.0          # Test runner, fixtures, parametrised tests
-pytest-cov>=4.1.0,<6.0.0      # Coverage reports with --cov-fail-under threshold
+pytest-cov>=7.1.0,<8.0.0      # Coverage reports with --cov-fail-under threshold
 pytest-xdist>=3.8.0,<4.0.0    # Parallel test execution (-n auto) for faster CI
 hypothesis>=6.163.0,<7.0.0     # Property-based testing (fuzz tensor invariants)
 
