@@ -42,13 +42,13 @@ where = ["src"]
 phystensor = ["py.typed"]
 
 # --- Linter Configuration (Ruff) ---
+# pyproject.toml
 [tool.ruff]
 line-length = 100
-target-version = "py311"
+target-version = "py310"
 
 [tool.ruff.lint]
-select = ["E", "F", "I", "N", "UP"]
-ignore = ["D203", "D205", "D400", "I001", "F401"]
+select = ["E", "F", "UP", "N", "D", "W", "I"]
 
 [tool.ruff.format]
 quote-style = "double"
