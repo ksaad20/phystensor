@@ -13,7 +13,7 @@
 <p align="center">
 
 [![Python 3.10](https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white)](https://www.python.org/downloads/release/python-3100/)
-![License](https://img.shields.io/badge/license-Apache%202.0-green)
+[![License](https://img.shields.io/github/license/ksaad20/phystensor.svg)](https://github.com/ksaad20/phystensor/blob/main/LICENSE.md)
 ![Build](https://img.shields.io/github/actions/workflow/status/OWNER/phystensor/ci.yml?branch=main)
 [![PyPI](https://img.shields.io/pypi/v/phystensor.svg)](https://pypi.org/project/phystensor/)
 ![Typing](https://img.shields.io/badge/typing-strict-blueviolet)
