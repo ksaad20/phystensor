@@ -15,7 +15,7 @@
 ![Python](https://img.shields.io/badge/python-3.10+-blue)
 ![License](https://img.shields.io/badge/license-Apache%202.0-green)
 ![Build](https://img.shields.io/github/actions/workflow/status/OWNER/phystensor/ci.yml?branch=main)
-![PyPI](https://img.shields.io/pypi/v/phystensor)
+[![PyPI](https://img.shields.io/pypi/v/phystensor.svg)](https://pypi.org/project/phystensor/)
 ![Typing](https://img.shields.io/badge/typing-strict-blueviolet)
 [![CI](https://github.com/ksaad20/phystensor/workflows/CI/badge.svg)](https://github.com/ksaad20/phystensor/actions)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21693589.svg)](https://doi.org/10.5281/zenodo.21693589)
