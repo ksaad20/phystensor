@@ -12,7 +12,7 @@
 
 <p align="center">
 
-![Python](https://img.shields.io/badge/python-3.10+-blue)
+[![Python 3.10](https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white)](https://www.python.org/downloads/release/python-3100/)
 ![License](https://img.shields.io/badge/license-Apache%202.0-green)
 ![Build](https://img.shields.io/github/actions/workflow/status/OWNER/phystensor/ci.yml?branch=main)
 [![PyPI](https://img.shields.io/pypi/v/phystensor.svg)](https://pypi.org/project/phystensor/)
