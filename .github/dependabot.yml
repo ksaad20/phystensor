@@ -1,13 +1,60 @@
 version: 2
+
 updates:
+  # ── Python dependencies ──────────────────────────────────────────────────
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
       interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Asia/Dhaka"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "security"
+    commit-message:
+      prefix: "security"
+      prefix-development: "chore"
+      include: "scope"
+    groups:
+      # Bundle patch/minor updates into single PRs to reduce noise
+      production-dependencies:
+        dependency-type: "production"
+        update-types:
+          - "minor"
+          - "patch"
+      development-dependencies:
+        dependency-type: "development"
+        update-types:
+          - "minor"
+          - "patch"
     ignore:
+      # Ignore major version bumps that might break your API
+      - dependency-name: "numpy"
+        update-types: ["version-update:semver-major"]
       - dependency-name: "scipy"
+        update-types: ["version-update:semver-major"]
+    # Optional: only if you have a team/collaborator with write access
+    # reviewers:
+    #   - "ksaad20"
 
-  - package-ecosystem: github-actions
-    directory: /
+  # ── GitHub Actions ─────────────────────────────────────────────────────────
+  - package-ecosystem: "github-actions"
+    directory: "/"
     schedule:
-      interval: daily
+      interval: "weekly"
+      day: "monday"
+      time: "06:30"
+      timezone: "Asia/Dhaka"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "ci-cd"
+    commit-message:
+      prefix: "ci"
+      include: "scope"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
