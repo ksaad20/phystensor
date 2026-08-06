@@ -13,7 +13,7 @@ on:
         type: boolean
 
 permissions:
-  contents: read
+  contents: write
   id-token: write
 
 jobs:
@@ -83,10 +83,12 @@ jobs:
           repository-url: https://test.pypi.org/legacy/
           packages-dir: dist/
 
-      - name: Publish to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
-
       - name: Sign artifacts with Sigstore
-        uses: sigstore/gh-action-sigstore-python@v3
+        uses: sigstore/gh-action-sigstore-python@v3.0.0
         with:
-           inputs: ./dist/*.tar.gz ./dist/*.whl
+          inputs: ./dist/*.tar.gz ./dist/*.whl
+
+      - name: Upload signatures to release
+        uses: softprops/action-gh-release@c95fe14e6d4d2b5fefb09d9b5fe8fd7bb4b2e1c8 # v2.0.8
+        with:
+          files: ./dist/*.sig
