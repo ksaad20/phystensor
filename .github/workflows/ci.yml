@@ -27,3 +27,8 @@ jobs:
 
       - name: Run tests
         run: python -m pytest -v --tb=short
+
+      - name: Audit dependencies
+        run: |
+          pip install pip-audit
+          pip-audit -r requirements.txt --desc
