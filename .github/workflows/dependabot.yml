@@ -1,0 +1,14 @@
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "ksaad20"
+    commit-message:
+      prefix: "security"
+      include: "scope"
+    # Optional: auto-merge patch-level security updates
+    # (requires additional GitHub Actions workflow)
