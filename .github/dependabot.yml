@@ -6,3 +6,8 @@ updates:
       interval: "weekly"
     ignore:
       - dependency-name: "scipy"
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: daily
