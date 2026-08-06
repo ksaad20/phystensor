@@ -6,11 +6,12 @@ build-backend = "setuptools.build_meta"
 name = "phystensor"
 version = "0.1.0"
 authors = [
-  { name="Kazi Saad Asif", email="kazisaadasif29@gmail.com" },
+    {name = "Kazi Saad Asif", email = "kazisaadasif29@gmail.com"},
 ]
-description = "A century-proof SI-vector physics engine for industrial inference."
+description = "A strictly-typed physical tensor library for deterministic scientific computing."
 readme = "README.md"
 requires-python = ">=3.10"
+license = {text = "MIT"}
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
@@ -19,21 +20,20 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 dependencies = [
-    "numpy>=1.24.0",
+    "numpy>=1.26.4,<3.0.0",
 ]
 
 [project.optional-dependencies]
 dev = [
-    "pytest>=7.0",
+    "pytest>=8.0.0,<9.0.0",
     "ruff>=0.1.0",
-    "build",
-    "twine",
+    "build>=1.2.0,<2.0.0",
+    "twine>=5.1.0,<6.0.0",
 ]
 
 [project.urls]
 Homepage = "https://github.com/ksaad20/phystensor"
 "Bug Tracker" = "https://github.com/ksaad20/phystensor/issues"
-Company = "https://xylema.com.bd"
 
 [tool.setuptools.packages.find]
 where = ["src"]
@@ -41,8 +41,6 @@ where = ["src"]
 [tool.setuptools.package-data]
 phystensor = ["py.typed"]
 
-# --- Linter Configuration (Ruff) ---
-# pyproject.toml
 [tool.ruff]
 line-length = 100
 target-version = "py310"
@@ -54,14 +52,8 @@ select = ["E", "F", "UP", "N", "D", "W", "I"]
 quote-style = "double"
 indent-style = "space"
 
-# --- Testing Configuration (Pytest) ---
 [tool.pytest.ini_options]
 minversion = "7.0"
 addopts = "-ra -q"
 testpaths = ["tests"]
 pythonpath = ["src"]
-
-- name: Install package
-  run: |
-    python -m pip install --upgrade pip
-    pip install -e ".[test]"

@@ -21,6 +21,8 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21693589.svg)](https://doi.org/10.5281/zenodo.21693589)
 ![Downloads](https://static.pepy.tech/badge/phystensor)
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/ksaad20/phystensor/badge)](https://securityscorecards.dev/viewer/?uri=github.com/ksaad20/phystensor)
+[![Scorecard supply-chain security](https://github.com/ksaad20/phystensor/actions/workflows/scorecard.yml/badge.svg)](https://github.com/ksaad20/phystensor/actions/workflows/scorecard.yml)
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/13970/badge)](https://www.bestpractices.dev/projects/13970)
 
 ---
 
