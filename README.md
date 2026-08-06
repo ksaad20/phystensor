@@ -20,7 +20,7 @@
 [![CI](https://github.com/ksaad20/phystensor/workflows/CI/badge.svg)](https://github.com/ksaad20/phystensor/actions)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21693589.svg)](https://doi.org/10.5281/zenodo.21693589)
 ![Downloads](https://static.pepy.tech/badge/phystensor)
-
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/13967/badge)](https://www.bestpractices.dev/projects/13967)
 </p>
 
 ---
