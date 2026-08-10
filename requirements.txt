@@ -12,7 +12,7 @@ numpy>=1.26.4,<3.0.0
 
 # Sparse solvers, optimize, integrate, special functions
 # Remove the duplicate line that was breaking Dependabot
-scipy>=1.14.0,<2.0.0
+scipy>=1.15.3,<2.0.0
 
 # Plotting backend for tensor visualisations & examples
 matplotlib>=3.9.0,<4.0.0
