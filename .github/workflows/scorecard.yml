@@ -1,15 +1,18 @@
+
 # .github/workflows/scorecard.yml
 # OpenSSF Scorecard — automated supply-chain security scanning
-# Docs: https://github.com/ossf/scorecard-action
 
 name: Scorecard supply-chain security
+
 on:
   # Run on every push to main
   push:
     branches: [main]
+
   # Run on PRs targeting main
   pull_request:
     branches: [main]
+
   # Run weekly on Sundays
   schedule:
     - cron: '0 0 * * 0'
@@ -21,13 +24,17 @@ jobs:
   analysis:
     name: Scorecard analysis
     runs-on: ubuntu-latest
+
     permissions:
       # Needed to upload SARIF results to GitHub Security tab
       security-events: write
-      # Needed for OIDC token authentication with OpenSSF API
+
+      # Needed for OIDC authentication with OpenSSF API
       id-token: write
-      # Needed to check out the repo
+
+      # Needed to check out the repository
       contents: read
+
       # Needed to read workflow metadata
       actions: read
 
@@ -38,15 +45,16 @@ jobs:
           persist-credentials: false
 
       - name: Run Scorecard analysis
-        uses: ossf/scorecard-action@v2.4.0
+        uses: ossf/scorecard-action@v2.4.4
         with:
           results_file: results.sarif
           results_format: sarif
-          # Publish results to the OpenSSF API (required for public repos)
+
+          # Publish results to OpenSSF API
           publish_results: true
 
       - name: Upload SARIF results to GitHub Security tab
-        uses: github/codeql-action/upload-sarif@v3
-        if: always()
+        uses: github/codeql-action/upload-sarif@v4
+        if: success()
         with:
           sarif_file: results.sarif
